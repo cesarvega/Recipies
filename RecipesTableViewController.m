@@ -1,19 +1,18 @@
 //
-//  MainmenuTableViewController.m
+//  RecipesTableViewController.m
 //  Recipies
 //
 //  Created by Xvegas on 8/11/14.
 //  Copyright (c) 2014 Xvegas. All rights reserved.
 //
 
-#import "MainmenuTableViewController.h"
-#import "CreateUserViewController.h"
-@interface MainmenuTableViewController ()
+#import "RecipesTableViewController.h"
+
+@interface RecipesTableViewController ()
 
 @end
 
-@implementation MainmenuTableViewController
-@synthesize AdminMenu;
+@implementation RecipesTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,8 +27,11 @@
 {
     [super viewDidLoad];
     
-    AdminMenu = [[NSArray alloc] initWithObjects:@"View Recipies",@"Create Recipies", @"Create Users ", nil];
-
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,61 +44,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return AdminMenu.count;
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menu" forIndexPath:indexPath];
-    
-    cell.textLabel.text = [AdminMenu objectAtIndex:indexPath.row];
+    // Configure the cell...
     
     return cell;
 }
-
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
-
-    
-    // present
-    [self presentViewController:MainMenuViewControl animated:YES completion:nil];
-
-    switch (indexPath.row) {
-        case 0:
-            
-            break;
-        case 1:
-            
-            break;
-        case 3:
-            
-            [self presentViewController:CreateUserView animated:YES completion:nil];
-
-            break;
-            
-        default:
-            break;
-    }
-
-
-}
-
+*/
 
 /*
 // Override to support conditional editing of the table view.

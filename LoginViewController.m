@@ -56,7 +56,7 @@
     [self presentViewController:MainMenuViewControl animated:YES completion:nil];
     
     // dismiss
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
