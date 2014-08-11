@@ -22,6 +22,11 @@
 		823429E819991BB800006F99 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823429CC19991BB800006F99 /* CoreData.framework */; };
 		823429F019991BB800006F99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 823429EE19991BB800006F99 /* InfoPlist.strings */; };
 		823429F219991BB800006F99 /* RecipiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 823429F119991BB800006F99 /* RecipiesTests.m */; };
+		823429FD19991C1300006F99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823429FC19991C1300006F99 /* Main.storyboard */; };
+		82342A0119991ED600006F99 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82342A0019991ED600006F99 /* LoginViewController.m */; };
+		82342A92199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 82342A91199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf */; };
+		82342A951999486400006F99 /* MainmenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82342A941999486400006F99 /* MainmenuTableViewController.m */; };
+		82342A981999521C00006F99 /* RecipiesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82342A971999521C00006F99 /* RecipiesListTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,14 @@
 		823429ED19991BB800006F99 /* RecipiesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RecipiesTests-Info.plist"; sourceTree = "<group>"; };
 		823429EF19991BB800006F99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		823429F119991BB800006F99 /* RecipiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipiesTests.m; sourceTree = "<group>"; };
+		823429FC19991C1300006F99 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		823429FF19991ED600006F99 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		82342A0019991ED600006F99 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		82342A91199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstyScriptExtraBoldDemo.otf; sourceTree = "<group>"; };
+		82342A931999486400006F99 /* MainmenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainmenuTableViewController.h; sourceTree = "<group>"; };
+		82342A941999486400006F99 /* MainmenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainmenuTableViewController.m; sourceTree = "<group>"; };
+		82342A961999521C00006F99 /* RecipiesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipiesListTableViewController.h; sourceTree = "<group>"; };
+		82342A971999521C00006F99 /* RecipiesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipiesListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +97,9 @@
 		823429BA19991BB800006F99 = {
 			isa = PBXGroup;
 			children = (
+				82342A901999446B00006F99 /* Resources */,
+				823429FE19991EB600006F99 /* ViewControllers */,
+				823429FB19991BD200006F99 /* StoryBoard */,
 				823429CE19991BB800006F99 /* Recipies */,
 				823429EB19991BB800006F99 /* RecipiesTests */,
 				823429C519991BB800006F99 /* Frameworks */,
@@ -151,6 +167,35 @@
 				823429EE19991BB800006F99 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		823429FB19991BD200006F99 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				823429FC19991C1300006F99 /* Main.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		823429FE19991EB600006F99 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				823429FF19991ED600006F99 /* LoginViewController.h */,
+				82342A0019991ED600006F99 /* LoginViewController.m */,
+				82342A931999486400006F99 /* MainmenuTableViewController.h */,
+				82342A941999486400006F99 /* MainmenuTableViewController.m */,
+				82342A961999521C00006F99 /* RecipiesListTableViewController.h */,
+				82342A971999521C00006F99 /* RecipiesListTableViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		82342A901999446B00006F99 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				82342A91199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +275,8 @@
 			files = (
 				823429D319991BB800006F99 /* InfoPlist.strings in Resources */,
 				823429DE19991BB800006F99 /* Images.xcassets in Resources */,
+				823429FD19991C1300006F99 /* Main.storyboard in Resources */,
+				82342A92199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82342A0119991ED600006F99 /* LoginViewController.m in Sources */,
+				82342A981999521C00006F99 /* RecipiesListTableViewController.m in Sources */,
 				823429D919991BB800006F99 /* AppDelegate.m in Sources */,
+				82342A951999486400006F99 /* MainmenuTableViewController.m in Sources */,
 				823429DC19991BB800006F99 /* Recipies.xcdatamodeld in Sources */,
 				823429D519991BB800006F99 /* main.m in Sources */,
 			);
