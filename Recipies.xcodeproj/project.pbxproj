@@ -31,6 +31,8 @@
 		82DCDC7219995E980084D91E /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCDC7119995E980084D91E /* CreateUserViewController.m */; };
 		82DCDC76199963B90084D91E /* CreateRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCDC75199963B90084D91E /* CreateRecipeViewController.m */; };
 		82DCDC79199963CE0084D91E /* RecipesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCDC78199963CE0084D91E /* RecipesTableViewController.m */; };
+		C02B48F4199A32B400CE32D0 /* blueBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C02B48F2199A32B400CE32D0 /* blueBackground.png */; };
+		C02B48F5199A32B400CE32D0 /* buttonBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = C02B48F3199A32B400CE32D0 /* buttonBackGround.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		82DCDC75199963B90084D91E /* CreateRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRecipeViewController.m; sourceTree = "<group>"; };
 		82DCDC77199963CE0084D91E /* RecipesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipesTableViewController.h; sourceTree = "<group>"; };
 		82DCDC78199963CE0084D91E /* RecipesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipesTableViewController.m; sourceTree = "<group>"; };
+		C02B48F2199A32B400CE32D0 /* blueBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueBackground.png; sourceTree = "<group>"; };
+		C02B48F3199A32B400CE32D0 /* buttonBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBackGround.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,8 @@
 		82342A901999446B00006F99 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C02B48F2199A32B400CE32D0 /* blueBackground.png */,
+				C02B48F3199A32B400CE32D0 /* buttonBackGround.png */,
 				82342A91199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf */,
 			);
 			name = Resources;
@@ -309,8 +315,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C02B48F4199A32B400CE32D0 /* blueBackground.png in Resources */,
 				823429D319991BB800006F99 /* InfoPlist.strings in Resources */,
 				823429DE19991BB800006F99 /* Images.xcassets in Resources */,
+				C02B48F5199A32B400CE32D0 /* buttonBackGround.png in Resources */,
 				823429FD19991C1300006F99 /* Main.storyboard in Resources */,
 				82342A92199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf in Resources */,
 			);

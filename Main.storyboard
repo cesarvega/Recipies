@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="9qm-V5-0xP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="9qm-V5-0xP">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -64,6 +65,7 @@
                     </view>
                     <connections>
                         <outlet property="Logo" destination="BE5-ZK-3qD" id="f5M-tx-8mC"/>
+                        <outlet property="LogoLabel" destination="BE5-ZK-3qD" id="H1h-3X-1OZ"/>
                         <outlet property="Password" destination="zxJ-00-Jsq" id="21K-SH-mQv"/>
                         <outlet property="Username" destination="pTU-i3-kew" id="bgB-As-B4P"/>
                     </connections>

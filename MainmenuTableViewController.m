@@ -73,9 +73,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
 
-    
-    // present
-    [self presentViewController:MainMenuViewControl animated:YES completion:nil];
+
 
     switch (indexPath.row) {
         case 0:
