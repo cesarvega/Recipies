@@ -37,7 +37,7 @@
     NSError *error;
     [fetchRequest setEntity:entity];
     fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-
+    
 }
 
 - (void)didReceiveMemoryWarning
