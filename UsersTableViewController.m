@@ -66,7 +66,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userIdentifier" forIndexPath:indexPath];
     
-    cell.textLabel.text = [fetchedObjects objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[fetchedObjects objectAtIndex:indexPath.row] username];
     
     return cell;
 }
