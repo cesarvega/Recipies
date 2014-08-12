@@ -29,10 +29,14 @@
     LogoLabel.text = @"R";
     LogoLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:80];
     LogoRecipesLabel.textAlignment = NSTextAlignmentCenter;
-    LogoRecipesLabel.text = @"Recipies";
+    LogoRecipesLabel.text = @"Recipes";
     LogoRecipesLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:40];
-	
-
+	Username.layer.borderColor=[[UIColor whiteColor]CGColor];
+    Username.layer.borderWidth= 1.0f;
+    Password.layer.borderColor=[[UIColor whiteColor]CGColor];
+    Password.layer.borderWidth= 1.0f;
+    [Password setDelegate:self];
+    [Username setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,7 +45,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
 
 /*
 #pragma mark - Navigation

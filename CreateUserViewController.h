@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateUserViewController : UIViewController
+@interface CreateUserViewController : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *UserName;
+@property (weak, nonatomic) IBOutlet UITextField *Password;
+
+- (IBAction)SaveUser:(id)sender;
 
 @end

@@ -38,7 +38,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>ThirstyScriptExtraBoldDemo</string>
+		<string>ThirstyScriptExtraBoldDemo.otf</string>
 	</array>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
