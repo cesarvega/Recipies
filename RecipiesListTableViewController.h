@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecipiesListTableViewController : UITableViewController
+@interface RecipiesListTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>{
 
+NSArray * AdminMenu;
+}
 @end

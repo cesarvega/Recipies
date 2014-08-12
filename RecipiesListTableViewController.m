@@ -7,6 +7,7 @@
 //
 
 #import "RecipiesListTableViewController.h"
+#import "CreateUserViewController.h"
 
 @interface RecipiesListTableViewController ()
 
@@ -27,11 +28,7 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+      AdminMenu = [[NSArray alloc] initWithObjects:@"View Recipies",@"Create Recipies", @"Create Users ", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,28 +41,52 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [AdminMenu count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipes" forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = [AdminMenu objectAtIndex:indexPath.row];
     
     return cell;
 }
-*/
+
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"UserTableIdentifier"];
+    int  myint = indexPath.row;
+    
+    switch (indexPath.row) {
+            
+        case 0:
+            
+            break;
+        case 1:
+            
+            break;
+        case 2:
+            
+            [self presentViewController:CreateUserView animated:YES completion:nil];
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
 
 /*
 // Override to support conditional editing of the table view.

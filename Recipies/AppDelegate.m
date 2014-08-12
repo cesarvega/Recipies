@@ -16,6 +16,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    delegate =(AppDelegate *) [[UIApplication sharedApplication] delegate];
+
     return YES;
 }
 

@@ -7,7 +7,8 @@
 //
 
 #import "UsersTableViewController.h"
-
+#import "AppDelegate.h"
+#import "Users.h"
 @interface UsersTableViewController ()
 
 @end
@@ -26,17 +27,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSManagedObjectContext *moc ;
-    NSEntityDescription *entityDescription = [NSEntityDescription
-                                              entityForName:@"Users" inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    NSError * error = nil;
-    fetchedObjects = [moc executeFetchRequest:request error:&error];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    NSManagedObjectContext * context = [appDelegate managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Users" inManagedObjectContext:context];
+    NSError *error;
+    [fetchRequest setEntity:entity];
+    fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
 
-    
-    // Set example predicate and sort orderings...
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,19 +57,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return fetchedObjects.count;
+    return [fetchedObjects count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userIdentifier" forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = [fetchedObjects objectAtIndex:indexPath.row];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

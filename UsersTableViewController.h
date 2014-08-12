@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UsersTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>{
-
     NSArray * Users;
     NSArray *fetchedObjects;
 }
