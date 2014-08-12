@@ -211,6 +211,8 @@
 		82342A901999446B00006F99 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C02B48F2199A32B400CE32D0 /* blueBackground.png */,
+				C02B48F3199A32B400CE32D0 /* buttonBackGround.png */,
 				82342A91199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf */,
 			);
 			name = Resources;
@@ -322,8 +324,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C02B48F4199A32B400CE32D0 /* blueBackground.png in Resources */,
 				823429D319991BB800006F99 /* InfoPlist.strings in Resources */,
 				823429DE19991BB800006F99 /* Images.xcassets in Resources */,
+				C02B48F5199A32B400CE32D0 /* buttonBackGround.png in Resources */,
 				823429FD19991C1300006F99 /* Main.storyboard in Resources */,
 				82342A92199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf in Resources */,
 			);

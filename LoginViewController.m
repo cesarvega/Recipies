@@ -24,7 +24,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _LogoLabel.textAlignment = NSTextAlignmentCenter;
+    _LogoLabel.text = @"R";
+    _LogoLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:80];
+    _LogoRecipesLabel.textAlignment = NSTextAlignmentCenter;
+    _LogoRecipesLabel.text = @"Recipies";
+    _LogoRecipesLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:40];
+	
+
 }
 
 - (void)didReceiveMemoryWarning
