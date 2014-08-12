@@ -13,7 +13,7 @@
 @end
 
 @implementation LoginViewController
-@synthesize Username,Password;
+@synthesize Username, Password, LogoLabel, LogoRecipesLabel;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -24,12 +24,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _LogoLabel.textAlignment = NSTextAlignmentCenter;
-    _LogoLabel.text = @"R";
-    _LogoLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:80];
-    _LogoRecipesLabel.textAlignment = NSTextAlignmentCenter;
-    _LogoRecipesLabel.text = @"Recipies";
-    _LogoRecipesLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:40];
+   
+    LogoLabel.textAlignment = NSTextAlignmentCenter;
+    LogoLabel.text = @"R";
+    LogoLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:80];
+    LogoRecipesLabel.textAlignment = NSTextAlignmentCenter;
+    LogoRecipesLabel.text = @"Recipies";
+    LogoRecipesLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:40];
 	
 
 }

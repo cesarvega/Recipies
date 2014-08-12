@@ -9,13 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *LogoLabel;
-
- 
 
 - (IBAction)AdminLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *Username;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
-@property (weak, nonatomic) IBOutlet UILabel *Logo;
-
+@property (weak, nonatomic) IBOutlet UILabel *LogoRecipesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *LogoLabel;
 @end

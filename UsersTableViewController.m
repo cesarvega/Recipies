@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        self.tableView.contentInset= UIEdgeInsetsMake(20,0,0,0);
     self.edgesForExtendedLayout = UIRectEdgeNone;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     NSManagedObjectContext * context = [appDelegate managedObjectContext];

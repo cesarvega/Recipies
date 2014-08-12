@@ -116,7 +116,7 @@
 				82342A901999446B00006F99 /* Resources */,
 				823429FB19991BD200006F99 /* StoryBoard */,
 				823429CE19991BB800006F99 /* Recipies */,
-				823429EB19991BB800006F99 /* RecipiesTests */,
+				823429EB19991BB800006F99 /* RecipesTests */,
 				823429C519991BB800006F99 /* Frameworks */,
 				823429C419991BB800006F99 /* Products */,
 			);
@@ -166,12 +166,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		823429EB19991BB800006F99 /* RecipiesTests */ = {
+		823429EB19991BB800006F99 /* RecipesTests */ = {
 			isa = PBXGroup;
 			children = (
 				823429F119991BB800006F99 /* RecipiesTests.m */,
 				823429EC19991BB800006F99 /* Supporting Files */,
 			);
+			name = RecipesTests;
 			path = RecipiesTests;
 			sourceTree = "<group>";
 		};
@@ -211,8 +212,6 @@
 		82342A901999446B00006F99 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C02B48F2199A32B400CE32D0 /* blueBackground.png */,
-				C02B48F3199A32B400CE32D0 /* buttonBackGround.png */,
 				82342A91199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf */,
 			);
 			name = Resources;
@@ -324,10 +323,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C02B48F4199A32B400CE32D0 /* blueBackground.png in Resources */,
 				823429D319991BB800006F99 /* InfoPlist.strings in Resources */,
 				823429DE19991BB800006F99 /* Images.xcassets in Resources */,
-				C02B48F5199A32B400CE32D0 /* buttonBackGround.png in Resources */,
 				823429FD19991C1300006F99 /* Main.storyboard in Resources */,
 				82342A92199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf in Resources */,
 			);
