@@ -44,22 +44,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		823429C319991BB800006F99 /* Recipies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipies.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		823429C319991BB800006F99 /* Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		823429C619991BB800006F99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		823429C819991BB800006F99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		823429CA19991BB800006F99 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		823429CC19991BB800006F99 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		823429D019991BB800006F99 /* Recipies-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Recipies-Info.plist"; sourceTree = "<group>"; };
+		823429D019991BB800006F99 /* Recipes-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Recipes-Info.plist"; sourceTree = "<group>"; };
 		823429D219991BB800006F99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		823429D419991BB800006F99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		823429D619991BB800006F99 /* Recipies-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Recipies-Prefix.pch"; sourceTree = "<group>"; };
+		823429D619991BB800006F99 /* Recipes-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Recipes-Prefix.pch"; sourceTree = "<group>"; };
 		823429D719991BB800006F99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		823429D819991BB800006F99 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		823429DB19991BB800006F99 /* Recipies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Recipies.xcdatamodel; sourceTree = "<group>"; };
 		823429DD19991BB800006F99 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		823429E319991BB800006F99 /* RecipiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		823429E319991BB800006F99 /* RecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		823429E419991BB800006F99 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		823429ED19991BB800006F99 /* RecipiesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RecipiesTests-Info.plist"; sourceTree = "<group>"; };
+		823429ED19991BB800006F99 /* RecipesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RecipesTests-Info.plist"; sourceTree = "<group>"; };
 		823429EF19991BB800006F99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		823429F119991BB800006F99 /* RecipiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipiesTests.m; sourceTree = "<group>"; };
 		823429FC19991C1300006F99 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 		823429BA19991BB800006F99 = {
 			isa = PBXGroup;
 			children = (
-				82342A901999446B00006F99 /* Resources */,
 				823429FE19991EB600006F99 /* ViewControllers */,
+				82342A901999446B00006F99 /* Resources */,
 				823429FB19991BD200006F99 /* StoryBoard */,
 				823429CE19991BB800006F99 /* Recipies */,
 				823429EB19991BB800006F99 /* RecipiesTests */,
@@ -122,8 +122,8 @@
 		823429C419991BB800006F99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				823429C319991BB800006F99 /* Recipies.app */,
-				823429E319991BB800006F99 /* RecipiesTests.xctest */,
+				823429C319991BB800006F99 /* Recipes.app */,
+				823429E319991BB800006F99 /* RecipesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,10 +155,10 @@
 		823429CF19991BB800006F99 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				823429D019991BB800006F99 /* Recipies-Info.plist */,
+				823429D019991BB800006F99 /* Recipes-Info.plist */,
 				823429D119991BB800006F99 /* InfoPlist.strings */,
 				823429D419991BB800006F99 /* main.m */,
-				823429D619991BB800006F99 /* Recipies-Prefix.pch */,
+				823429D619991BB800006F99 /* Recipes-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -175,7 +175,7 @@
 		823429EC19991BB800006F99 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				823429ED19991BB800006F99 /* RecipiesTests-Info.plist */,
+				823429ED19991BB800006F99 /* RecipesTests-Info.plist */,
 				823429EE19991BB800006F99 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -192,14 +192,14 @@
 		823429FE19991EB600006F99 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				82DCDC73199963880084D91E /* Recipes */,
-				82DCDC6F19995E6B0084D91E /* Users */,
+				82342A961999521C00006F99 /* RecipiesListTableViewController.h */,
+				82342A971999521C00006F99 /* RecipiesListTableViewController.m */,
 				823429FF19991ED600006F99 /* LoginViewController.h */,
 				82342A0019991ED600006F99 /* LoginViewController.m */,
 				82342A931999486400006F99 /* MainmenuTableViewController.h */,
 				82342A941999486400006F99 /* MainmenuTableViewController.m */,
-				82342A961999521C00006F99 /* RecipiesListTableViewController.h */,
-				82342A971999521C00006F99 /* RecipiesListTableViewController.m */,
+				82DCDC73199963880084D91E /* Recipes */,
+				82DCDC6F19995E6B0084D91E /* Users */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -237,9 +237,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		823429C219991BB800006F99 /* Recipies */ = {
+		823429C219991BB800006F99 /* Recipes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 823429F519991BB800006F99 /* Build configuration list for PBXNativeTarget "Recipies" */;
+			buildConfigurationList = 823429F519991BB800006F99 /* Build configuration list for PBXNativeTarget "Recipes" */;
 			buildPhases = (
 				823429BF19991BB800006F99 /* Sources */,
 				823429C019991BB800006F99 /* Frameworks */,
@@ -249,14 +249,14 @@
 			);
 			dependencies = (
 			);
-			name = Recipies;
+			name = Recipes;
 			productName = Recipies;
-			productReference = 823429C319991BB800006F99 /* Recipies.app */;
+			productReference = 823429C319991BB800006F99 /* Recipes.app */;
 			productType = "com.apple.product-type.application";
 		};
-		823429E219991BB800006F99 /* RecipiesTests */ = {
+		823429E219991BB800006F99 /* RecipesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 823429F819991BB800006F99 /* Build configuration list for PBXNativeTarget "RecipiesTests" */;
+			buildConfigurationList = 823429F819991BB800006F99 /* Build configuration list for PBXNativeTarget "RecipesTests" */;
 			buildPhases = (
 				823429DF19991BB800006F99 /* Sources */,
 				823429E019991BB800006F99 /* Frameworks */,
@@ -267,9 +267,9 @@
 			dependencies = (
 				823429EA19991BB800006F99 /* PBXTargetDependency */,
 			);
-			name = RecipiesTests;
+			name = RecipesTests;
 			productName = RecipiesTests;
-			productReference = 823429E319991BB800006F99 /* RecipiesTests.xctest */;
+			productReference = 823429E319991BB800006F99 /* RecipesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -286,7 +286,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 823429BE19991BB800006F99 /* Build configuration list for PBXProject "Recipies" */;
+			buildConfigurationList = 823429BE19991BB800006F99 /* Build configuration list for PBXProject "Recipes" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -298,8 +298,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				823429C219991BB800006F99 /* Recipies */,
-				823429E219991BB800006F99 /* RecipiesTests */,
+				823429C219991BB800006F99 /* Recipes */,
+				823429E219991BB800006F99 /* RecipesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -357,7 +357,7 @@
 /* Begin PBXTargetDependency section */
 		823429EA19991BB800006F99 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 823429C219991BB800006F99 /* Recipies */;
+			target = 823429C219991BB800006F99 /* Recipes */;
 			targetProxy = 823429E919991BB800006F99 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -460,9 +460,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Recipies/Recipies-Prefix.pch";
-				INFOPLIST_FILE = "Recipies/Recipies-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Recipies/Recipes-Prefix.pch";
+				INFOPLIST_FILE = "Recipies/Recipes-Info.plist";
+				PRODUCT_NAME = Recipes;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -473,9 +473,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Recipies/Recipies-Prefix.pch";
-				INFOPLIST_FILE = "Recipies/Recipies-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Recipies/Recipes-Prefix.pch";
+				INFOPLIST_FILE = "Recipies/Recipes-Info.plist";
+				PRODUCT_NAME = Recipes;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -495,8 +495,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "RecipiesTests/RecipiesTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "RecipiesTests/RecipesTests-Info.plist";
+				PRODUCT_NAME = RecipesTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -513,8 +513,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Recipies/Recipies-Prefix.pch";
-				INFOPLIST_FILE = "RecipiesTests/RecipiesTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "RecipiesTests/RecipesTests-Info.plist";
+				PRODUCT_NAME = RecipesTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -523,7 +523,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		823429BE19991BB800006F99 /* Build configuration list for PBXProject "Recipies" */ = {
+		823429BE19991BB800006F99 /* Build configuration list for PBXProject "Recipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				823429F319991BB800006F99 /* Debug */,
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		823429F519991BB800006F99 /* Build configuration list for PBXNativeTarget "Recipies" */ = {
+		823429F519991BB800006F99 /* Build configuration list for PBXNativeTarget "Recipes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				823429F619991BB800006F99 /* Debug */,
@@ -541,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		823429F819991BB800006F99 /* Build configuration list for PBXNativeTarget "RecipiesTests" */ = {
+		823429F819991BB800006F99 /* Build configuration list for PBXNativeTarget "RecipesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				823429F919991BB800006F99 /* Debug */,

@@ -57,9 +57,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menu" forIndexPath:indexPath];
     
     cell.textLabel.text = [AdminMenu objectAtIndex:indexPath.row];
@@ -71,20 +68,18 @@
 
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
-
+    CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"UserTableIdentifier"];
+    int  myint = indexPath.row;
     
-    // present
-    [self presentViewController:MainMenuViewControl animated:YES completion:nil];
-
     switch (indexPath.row) {
+            
         case 0:
             
             break;
         case 1:
             
             break;
-        case 3:
+        case 2:
             
             [self presentViewController:CreateUserView animated:YES completion:nil];
 
