@@ -95,16 +95,13 @@
 
 -(void)updateExistingClient:(Users*)exsitingUser{
     NSError *error = nil;
-   
     exsitingUser.username = UserName.text;
     exsitingUser.pasword = Password.text;
-    
-    error = nil;
     if (![context save:&error]) {
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"User successfully updated."
-                                                       delegate:self
+                                              delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
