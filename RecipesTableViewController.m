@@ -8,7 +8,7 @@
 
 #import "RecipesTableViewController.h"
 #import "AppDelegate.h"
-#import "Users.h"
+#import "Recipes.h"
 @interface RecipesTableViewController ()
 
 @end
@@ -33,10 +33,15 @@
     context = [appDelegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Users" inManagedObjectContext:context];
+                                   entityForName:@"Recipes" inManagedObjectContext:context];
     NSError *error;
     [fetchRequest setEntity:entity];
+    [fetchRequest setReturnsDistinctResults:YES];
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"recipeName"]];
+    [fetchRequest setResultType:NSDictionaryResultType];
+    
     fetchedObjects = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&error]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,13 +54,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     return [fetchedObjects count];
 }
 
@@ -66,12 +69,55 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"recipesIdentifier"];
     }
+    NSString* recipeName =[[fetchedObjects objectAtIndex:indexPath.row] objectForKey:@"recipeName"];
+    cell.textLabel.text = recipeName;
     
-    //cell.textLabel.text = [[fetchedObjects objectAtIndex:indexPath.row]username];
-    //cell.detailTextLabel.text =[[fetchedObjects objectAtIndex:indexPath.row] pasword];
     return cell;
 }
 
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        nameTodelete = cell.textLabel.text;
+        indexPathForDeletion = indexPath;
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this recipe?"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Yes", nil];
+        
+        [message show];
+    }
+    
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSError *error;
+    
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
+        NSFetchRequest * request = [[NSFetchRequest alloc] init];
+        [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName	 = %@",nameTodelete]];
+        
+        NSMutableArray * recipesToDelete =  [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:request error:&error] ];
+        for (Recipes* recipe in recipesToDelete) {
+            [appDelegate.managedObjectContext deleteObject:recipe];
+            if (![context save:&error]) {
+            }
+            else{
+                [fetchedObjects removeObjectAtIndex:indexPathForDeletion.row];
+               [self.tableView reloadData ];            }
+             }
+       }
+}
 
 
 @end

@@ -27,6 +27,7 @@
     [super viewDidLoad];
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     context = [appDelegate managedObjectContext];
+   
 }
 
 - (void)didReceiveMemoryWarning{
@@ -54,8 +55,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:@"createRecipeIdentifier"];
     }
-    cell.textLabel.text = [[fetchedObjects objectAtIndex:indexPath.row] recipeName];
-    
+    cell.textLabel.text = [[fetchedObjects objectAtIndex:indexPath.row] recipeIngredient];
+     cell.detailTextLabel.text =[[fetchedObjects objectAtIndex:indexPath.row] recipeGrams];
     return cell;
 }
 
@@ -105,10 +106,9 @@
     NSError *error;
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
     fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
         if (fetchedObjects.count>0) {
-             [IngredientsTableView reloadData];
         }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Recipe"  message:@"Recipe not found! "
                                                            delegate:self
@@ -117,6 +117,7 @@
             [alert show];
         }
     }
+     [IngredientsTableView reloadData];
 }
 
 - (IBAction)AddIngredient:(id)sender {
@@ -130,7 +131,7 @@
     recipe = (Recipes*) [[context executeFetchRequest:request error:&error]lastObject] ;
         
     if (recipe==nil) {
-                if (fetchedObjects.count>0) {
+        
                             recipe = [NSEntityDescription
                                             insertNewObjectForEntityForName:@"Recipes"
                                             inManagedObjectContext:context];
@@ -142,13 +143,19 @@
                         
                            }
                           else{
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe ingredient successfully saved."
+                              NSError *error;
+                              NSFetchRequest * request = [[NSFetchRequest alloc] init];
+                              [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
+                              [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
+                              fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
+
+                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe ingredient successfully saved."
                                                                        delegate:self
                                                                        cancelButtonTitle:@"OK"
                                                                        otherButtonTitles:nil];
                                  [alert show];
                         }
-                    }
+        
        }
         else{
                 NSError *error = nil;
@@ -158,7 +165,12 @@
             
                 }
                 else{
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe ingredient successfully updated."
+                    NSError *error;
+                    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+                    [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
+                    [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
+                    fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe ingredient successfully updated."
                                                                         delegate:self
                                                                         cancelButtonTitle:@"OK"
                                                                         otherButtonTitles:nil];

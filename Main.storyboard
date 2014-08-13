@@ -458,7 +458,7 @@
                                     <action selector="FindRecipe:" destination="oUa-5u-szf" eventType="touchUpInside" id="tD5-gF-p7z"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingridient" minimumFontSize="17" id="sXv-Tz-Byi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingredient" minimumFontSize="17" id="sXv-Tz-Byi">
                                 <rect key="frame" x="7" y="137" width="162" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -513,7 +513,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="DuplicateRecipe" destination="reD-VB-0cm" id="eqT-Vb-awW"/>
                         <outlet property="IngredientGrams" destination="eOW-a7-eEv" id="M6e-Kd-HB8"/>
                         <outlet property="IngredientName" destination="sXv-Tz-Byi" id="0be-Oc-diH"/>
                         <outlet property="IngredientsTableView" destination="Cil-Hv-ZB7" id="9Vp-Zh-RHa"/>
