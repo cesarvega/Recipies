@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface CreateRecipeViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>{
-    NSArray * Users;
+#import "Recipes.h"
+
+@interface CreateRecipeViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
+    Recipes * recipe;
     NSMutableArray *fetchedObjects;
     AppDelegate *appDelegate;
     NSManagedObjectContext * context;
@@ -17,4 +19,12 @@
     NSString *nameTodelete;
 }
 
+- (IBAction)FindRecipe:(id)sender;
+- (IBAction)AddIngredient:(id)sender;
+- (IBAction)DuplicateRecipe:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITextField *RecipeName;
+@property (weak, nonatomic) IBOutlet UITextField *IngredientName;
+@property (weak, nonatomic) IBOutlet UITextField *IngredientGrams;
+@property (strong, nonatomic) IBOutlet UITableView *IngredientsTableView;
 @end

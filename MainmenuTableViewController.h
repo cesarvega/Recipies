@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Users.h"
+@interface MainmenuTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>{
 
-@interface MainmenuTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+    Users * user;
+    AppDelegate *appDelegate;
+    NSManagedObjectContext * context;
+
+}
     @property (strong, nonatomic) NSArray * AdminMenu;
 @end

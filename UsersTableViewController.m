@@ -105,14 +105,15 @@
         [request setEntity:[NSEntityDescription entityForName:@"Users" inManagedObjectContext:context]];
         [request setPredicate:[NSPredicate predicateWithFormat:@"username = %@",nameTodelete]];
         
-       Users * user = [[context executeFetchRequest:request error:&error] lastObject];
-       [appDelegate.managedObjectContext deleteObject:user];
+        Users * user = [[context executeFetchRequest:request error:&error] lastObject];
+        [appDelegate.managedObjectContext deleteObject:user];
+        [fetchedObjects removeObjectAtIndex:indexPathForDeletion.row];
+        [self.tableView reloadData ];
+
     
     }
     
-    [fetchedObjects removeObjectAtIndex:indexPathForDeletion.row];
-    [self.tableView reloadData];
-}
+  }
 
 
 

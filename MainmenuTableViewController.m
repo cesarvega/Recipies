@@ -9,6 +9,7 @@
 #import "MainmenuTableViewController.h"
 #import "CreateUserViewController.h"
 #import "CreateRecipeViewController.h"
+#import "RecipiesListTableViewController.h"
 @interface MainmenuTableViewController ()
 
 @end
@@ -29,8 +30,11 @@
 {
     [super viewDidLoad];
     self.tableView.contentInset= UIEdgeInsetsMake(20,0,0,0);
-    AdminMenu = [[NSArray alloc] initWithObjects:@"View Recipies",@"Create Recipies", @"Create Users ", nil];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    context = [appDelegate managedObjectContext];
 
+    AdminMenu = [[NSArray alloc] initWithObjects:@"Recipes", @"Users ", nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,25 +74,23 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"UserTableIdentifier"];
-     CreateRecipeViewController *CreateRecipe = (CreateRecipeViewController*)[storyboard instantiateViewControllerWithIdentifier:@"recipesIdentifier"];
+    CreateRecipeViewController *CreateRecipe = (CreateRecipeViewController*)[storyboard instantiateViewControllerWithIdentifier:@"recipesIdentifier"];
 
 
 
     switch (indexPath.row) {
             	
         case 0:
+            [self presentViewController:CreateRecipe animated:YES completion:nil];
             
+
             break;
         case 1:
-            [self presentViewController:CreateRecipe animated:YES completion:nil];
-
-            break;
-        case 2:
-            
             [self presentViewController:CreateUserView animated:YES completion:nil];
-
-            break;
             
+
+                  break;
+    
         default:
             break;
     }
@@ -97,53 +99,5 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

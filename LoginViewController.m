@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "MainmenuTableViewController.h"
+#import "RecipiesListTableViewController.h"
 @interface LoginViewController ()
 
 @end
@@ -37,6 +38,8 @@
     Password.layer.borderWidth= 1.0f;
     [Password setDelegate:self];
     [Username setDelegate:self];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    context = [appDelegate managedObjectContext];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,76 +54,61 @@
     return YES;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 - (IBAction)AdminLogin:(id)sender {
     
     if (Password.text.length>0 && Username.text.length>0 ) {
         
-    appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        context = [appDelegate managedObjectContext];
-    
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription
-                                       entityForName:@"Users" inManagedObjectContext:context];
         NSError *error;
-        [fetchRequest setEntity:entity];
-        fetchedObjects = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&error]];
-    NSString *password;
-    NSString *userName ;
-    BOOL   isUser;
-    isUser = NO;
-    for (NSArray *item in fetchedObjects) {
         
-        password = [NSString stringWithFormat:@"%@",[item valueForKey:@"password"]];
-        userName = [NSString stringWithFormat:@"%@",[item valueForKey:@"username"]];
+        NSFetchRequest * request = [[NSFetchRequest alloc] init];
+        [request setEntity:[NSEntityDescription entityForName:@"Users" inManagedObjectContext:context]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"username = %@",Username.text]];
         
-        if([Username.text isEqual: userName ] && [Password.text isEqual:password]){
+        user = [[context executeFetchRequest:request error:&error] lastObject];
+        
+        if([Username.text isEqual: user.username ] && [Password.text isEqual:user.pasword]){
             appDelegate.LoginUserName = Username.text;
             appDelegate.LoginUserPassword = Password.text;
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
             
-            // present
-            [self presentViewController:MainMenuViewControl animated:YES completion:nil];            //            isUser = NO;
-            //
-            //        }else { isUser = YES;   }
-            //    }
-            //
-            //    if (isUser == YES) {
-            //        NSString *successMsg = [NSString stringWithFormat:@"Wrong User Name or Password"];
-            //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Try Again"
-            //                                                        message:successMsg
-            //                                                       delegate:nil
-            //                                              cancelButtonTitle:@"OK"
-            //                                              otherButtonTitles: nil];
-            // [alert show];
+            if ([appDelegate.LoginUserName isEqual: @"Admin"] && [appDelegate.LoginUserPassword isEqual: @"embarek"] ) {
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+                
+                
+                [self presentViewController:MainMenuViewControl animated:YES completion:nil];
+
+                
+                
+            }else{
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                RecipiesListTableViewController *RecipeListView = (RecipiesListTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"recipeListIdentifier"];
+                [self presentViewController:RecipeListView animated:YES completion:nil];
+                
+
+            }
             
+            
+            
+            
+
             
         }
-        //  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-        //
-        //   MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-        //    
-        //    [self presentViewController:centerController animated:YES completion:nil];
-        
+        else{
+            
+            NSString *successMsg = [NSString stringWithFormat:@"Wrong User Name or Password"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Try Again"
+                                                            message:successMsg
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles: nil];
+            [alert show];	
+        }
+    
     }
-    
-  }
-    
-    // dismiss
-    //[self dismissViewControllerAnimated:YES completion:nil];
-}
+ }
 
 
 

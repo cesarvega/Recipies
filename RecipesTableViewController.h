@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface RecipesTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>{
+@interface RecipesTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
     NSArray * Users;
     NSMutableArray *fetchedObjects;
     AppDelegate *appDelegate;
     NSManagedObjectContext * context;
     NSIndexPath *indexPathForDeletion;
     NSString *nameTodelete;
-}@end
+}
+
+
+
+@end

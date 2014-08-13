@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "Users.h"
 @interface LoginViewController : UIViewController<UITextFieldDelegate>{
 
     NSMutableArray *fetchedObjects;
-    NSArray * Users;
+    Users * user;
     AppDelegate *appDelegate;
     NSManagedObjectContext * context;
     NSIndexPath *indexPathForDeletion;

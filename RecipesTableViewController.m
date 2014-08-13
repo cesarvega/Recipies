@@ -7,7 +7,8 @@
 //
 
 #import "RecipesTableViewController.h"
-
+#import "AppDelegate.h"
+#import "Users.h"
 @interface RecipesTableViewController ()
 
 @end
