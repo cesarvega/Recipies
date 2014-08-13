@@ -8,7 +8,7 @@
 
 #import "CreateRecipeViewController.h"
 #import "AppDelegate.h"
-#import "Users.h"
+#import "Recipes.h"
 @interface CreateRecipeViewController ()
 @end
 @implementation CreateRecipeViewController
@@ -27,7 +27,9 @@
     [super viewDidLoad];
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     context = [appDelegate managedObjectContext];
-   
+    [RecipeName setDelegate:self];
+    [IngredientName setDelegate:self];
+    [IngredientGrams setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -89,13 +91,13 @@
     if([title isEqualToString:@"Yes"])
     {
         NSFetchRequest * request = [[NSFetchRequest alloc] init];
-        [request setEntity:[NSEntityDescription entityForName:@"Users" inManagedObjectContext:context]];
-        [request setPredicate:[NSPredicate predicateWithFormat:@"username = %@",nameTodelete]];
-        
-        Users * user = [[context executeFetchRequest:request error:&error] lastObject];
-        [appDelegate.managedObjectContext deleteObject:user];
-        
-        [fetchedObjects removeObjectAtIndex:indexPathForDeletion.row];
+        [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"(recipeName = %@) AND (recipeIngredient = %@)",RecipeName.text , nameTodelete]];
+        Recipes * recipeToDelete = [[context executeFetchRequest:request error:&error] lastObject];
+        [appDelegate.managedObjectContext deleteObject:recipeToDelete];
+        [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
+        fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
         [IngredientsTableView reloadData];
     }
     
@@ -109,12 +111,14 @@
     [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
     fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
         if (fetchedObjects.count>0) {
+            [RecipeName resignFirstResponder];
         }else{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Recipe"  message:@"Recipe not found! "
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];
+            
         }
     }
      [IngredientsTableView reloadData];
@@ -187,10 +191,10 @@
         NSError *error;
         NSFetchRequest * request = [[NSFetchRequest alloc] init];
         [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
-        [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName]];
-        fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
-        if (fetchedObjects.count>0) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Recipe"  message:@"This recipe already exist "
+        [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text	]];
+        NSMutableArray* duplicateObjects = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:request error:&error]];
+        if (duplicateObjects.count>0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"  message:@"This recipe already exist "
                                                             delegate:self
                                                             cancelButtonTitle:@"OK"
                                                             otherButtonTitles:nil];
@@ -201,30 +205,23 @@
                                             insertNewObjectForEntityForName:@"Recipes"
                                             inManagedObjectContext:context];
                                             NSError *error = nil;
-                                            recipe.recipeName=item.recipeName;
+                                            recipe.recipeName=RecipeName.text;
                                             recipe.recipeIngredient=item.recipeIngredient;
                                             recipe.recipeGrams =item.recipeGrams;
                 if (![context save:&error]) {
                     
                 }
-                else{
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe successfully copied"
-                                                                    delegate:self
-                                                                    cancelButtonTitle:@"OK"
-                                                                    otherButtonTitles:nil];
-                    [alert show];
-                }
+                
             }
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe successfully copied"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+
         }
     }
 }
 
 
-
-
-
-
-
-
-
-    @end
+@end
