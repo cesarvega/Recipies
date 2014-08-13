@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+@interface LoginViewController : UIViewController<UITextFieldDelegate>{
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate>
+    NSMutableArray *fetchedObjects;
+    NSArray * Users;
+    AppDelegate *appDelegate;
+    NSManagedObjectContext * context;
+    NSIndexPath *indexPathForDeletion;
+    NSString *nameTodelete;
+}
 
 - (IBAction)AdminLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *Username;

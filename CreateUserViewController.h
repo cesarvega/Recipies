@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Users.h"
+@interface CreateUserViewController : UIViewController<UITextFieldDelegate>{
 
-@interface CreateUserViewController : UIViewController<UITextFieldDelegate>
+    AppDelegate *appDelegate;
+    NSManagedObjectContext * context;
+    Users * user;
+  
+}
+
 @property (weak, nonatomic) IBOutlet UITextField *UserName;
 @property (weak, nonatomic) IBOutlet UITextField *Password;
 

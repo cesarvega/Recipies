@@ -28,16 +28,15 @@
 {
     [super viewDidLoad];
         self.tableView.contentInset= UIEdgeInsetsMake(20,0,0,0);
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSManagedObjectContext * context = [appDelegate managedObjectContext];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    context = [appDelegate managedObjectContext];
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Users" inManagedObjectContext:context];
     NSError *error;
     [fetchRequest setEntity:entity];
-    fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    
+    fetchedObjects = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&error]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,60 +64,56 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userIdentifier" forIndexPath:indexPath];
-    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"userIdentifier"];
+    }
     cell.textLabel.text = [[fetchedObjects objectAtIndex:indexPath.row] username];
-    
+    cell.detailTextLabel.text =[[fetchedObjects objectAtIndex:indexPath.row] pasword];
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        nameTodelete = cell.textLabel.text;
+        indexPathForDeletion = indexPath;
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this user?"
+                                                          message:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Yes", nil];
+        
+        [message show];
+    }
+   
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSError *error;
+
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
+        NSFetchRequest * request = [[NSFetchRequest alloc] init];
+        [request setEntity:[NSEntityDescription entityForName:@"Users" inManagedObjectContext:context]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"username = %@",nameTodelete]];
+        
+       Users * user = [[context executeFetchRequest:request error:&error] lastObject];
+       [appDelegate.managedObjectContext deleteObject:user];
+    
+    }
+    
+    [fetchedObjects removeObjectAtIndex:indexPathForDeletion.row];
+    [self.tableView reloadData];
 }
-*/
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

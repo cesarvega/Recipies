@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AppDelegate.h"
+#import "Users.h"
 @interface UsersTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>{
     NSArray * Users;
-    NSArray *fetchedObjects;
+    NSMutableArray *fetchedObjects;
+    AppDelegate *appDelegate;
+    NSManagedObjectContext * context;
+    NSIndexPath *indexPathForDeletion;
+    NSString *nameTodelete;
 }
 @end

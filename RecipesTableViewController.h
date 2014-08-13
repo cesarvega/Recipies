@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RecipesTableViewController : UITableViewController
-
-@end
+#import "AppDelegate.h"
+@interface RecipesTableViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>{
+    NSArray * Users;
+    NSMutableArray *fetchedObjects;
+    AppDelegate *appDelegate;
+    NSManagedObjectContext * context;
+    NSIndexPath *indexPathForDeletion;
+    NSString *nameTodelete;
+}@end

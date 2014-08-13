@@ -8,6 +8,7 @@
 
 #import "MainmenuTableViewController.h"
 #import "CreateUserViewController.h"
+#import "CreateRecipeViewController.h"
 @interface MainmenuTableViewController ()
 
 @end
@@ -69,6 +70,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"UserTableIdentifier"];
+     CreateRecipeViewController *CreateRecipe = (CreateRecipeViewController*)[storyboard instantiateViewControllerWithIdentifier:@"recipesIdentifier"];
 
 
 
@@ -78,7 +80,8 @@
             
             break;
         case 1:
-            
+            [self presentViewController:CreateRecipe animated:YES completion:nil];
+
             break;
         case 2:
             

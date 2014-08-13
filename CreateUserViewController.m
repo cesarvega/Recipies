@@ -29,6 +29,9 @@
     [super viewDidLoad];
     [Password setDelegate:self];
     [UserName setDelegate:self];
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    context = [appDelegate managedObjectContext];
+
    
 }
 
@@ -46,18 +49,28 @@
 
 - (IBAction)SaveUser:(id)sender {
     
+    NSError *error;
+
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"Users" inManagedObjectContext:context]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"username = %@",UserName.text]];
+    
+    user = [[context executeFetchRequest:request error:&error] lastObject];
+    
+    if (user == nil) {
+        
+    
+    
     if (Password.text.length>0 && UserName.text.length>0 ) {
      
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    NSManagedObjectContext * context = [appDelegate managedObjectContext];
-        Users * user = [NSEntityDescription
+        user = [NSEntityDescription
                         insertNewObjectForEntityForName:@"Users"
                         inManagedObjectContext:context];
 
        
         user.username = UserName.text;
         user.pasword = Password.text;
-        NSError *error;
+        
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
@@ -72,15 +85,43 @@
 
         
     }
-
+    }else{
+      [self updateExistingClient: user];
+    }
+  
+    [self clearTextFields];
 }
 
 
+-(void)updateExistingClient:(Users*)exsitingUser{
+    NSError *error = nil;
+   
+    exsitingUser.username = UserName.text;
+    exsitingUser.pasword = Password.text;
+    
+    error = nil;
+    if (![context save:&error]) {
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"User successfully updated."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+    }
+    
+    
+}
 
 
-
-
-
+-(void)clearTextFields{
+    
+    UserName.text=@"";
+    Password.text=@"";
+    [Password resignFirstResponder];
+    
+}
 
 
 

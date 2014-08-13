@@ -65,14 +65,58 @@
 
 - (IBAction)AdminLogin:(id)sender {
     
+    if (Password.text.length>0 && Username.text.length>0 ) {
+        
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        context = [appDelegate managedObjectContext];
     
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription
+                                       entityForName:@"Users" inManagedObjectContext:context];
+        NSError *error;
+        [fetchRequest setEntity:entity];
+        fetchedObjects = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&error]];
+    NSString *password;
+    NSString *userName ;
+    BOOL   isUser;
+    isUser = NO;
+    for (NSArray *item in fetchedObjects) {
+        
+        password = [NSString stringWithFormat:@"%@",[item valueForKey:@"password"]];
+        userName = [NSString stringWithFormat:@"%@",[item valueForKey:@"username"]];
+        
+        if([Username.text isEqual: userName ] && [Password.text isEqual:password]){
+            appDelegate.LoginUserName = Username.text;
+            appDelegate.LoginUserPassword = Password.text;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+            
+            // present
+            [self presentViewController:MainMenuViewControl animated:YES completion:nil];            //            isUser = NO;
+            //
+            //        }else { isUser = YES;   }
+            //    }
+            //
+            //    if (isUser == YES) {
+            //        NSString *successMsg = [NSString stringWithFormat:@"Wrong User Name or Password"];
+            //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Try Again"
+            //                                                        message:successMsg
+            //                                                       delegate:nil
+            //                                              cancelButtonTitle:@"OK"
+            //                                              otherButtonTitles: nil];
+            // [alert show];
+            
+            
+        }
+        //  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        //
+        //   MainMenuViewController *centerController = (MainMenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+        //    
+        //    [self presentViewController:centerController animated:YES completion:nil];
+        
+    }
     
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
-    
-    // present
-    [self presentViewController:MainMenuViewControl animated:YES completion:nil];
+  }
     
     // dismiss
     //[self dismissViewControllerAnimated:YES completion:nil];
