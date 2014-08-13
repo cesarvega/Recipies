@@ -9,6 +9,7 @@
 #import "RecipesTableViewController.h"
 #import "AppDelegate.h"
 #import "Recipes.h"
+#import "CreateRecipeViewController.h"
 @interface RecipesTableViewController ()
 
 @end
@@ -24,8 +25,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     self.tableView.contentInset= UIEdgeInsetsMake(20,0,0,0);
     
@@ -44,26 +44,41 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    indexPathForSeguey = indexPath;
+    [self performSegueWithIdentifier:@"showDetail" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        
+        NSString*  object = [[fetchedObjects objectAtIndex:indexPathForSeguey.row]objectForKey:@"recipeName"];
+         CreateRecipeViewController *CreateRecipe = [segue destinationViewController];
+        
+   [CreateRecipe setRecipeFromSegue:object];
+    
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [fetchedObjects count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipesIdentifier" forIndexPath:indexPath];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -113,8 +128,18 @@
             if (![context save:&error]) {
             }
             else{
-                [fetchedObjects removeObjectAtIndex:indexPathForDeletion.row];
-               [self.tableView reloadData ];            }
+                NSError *error;
+                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+                NSEntityDescription *entity = [NSEntityDescription
+                                               entityForName:@"Recipes" inManagedObjectContext:context];
+                [fetchRequest setEntity:entity];
+                [fetchRequest setReturnsDistinctResults:YES];
+                [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"recipeName"]];
+                [fetchRequest setResultType:NSDictionaryResultType];
+                
+                fetchedObjects = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&error]];
+
+                [self.tableView reloadData ];            }
              }
        }
 }

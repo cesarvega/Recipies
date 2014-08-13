@@ -14,9 +14,9 @@
     AppDelegate *appDelegate;
     NSManagedObjectContext * context;
     NSIndexPath *indexPathForDeletion;
+    NSIndexPath *indexPathForSeguey;
     NSString *nameTodelete;
 }
-
 
 
 @end

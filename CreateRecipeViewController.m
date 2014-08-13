@@ -13,7 +13,7 @@
 @end
 @implementation CreateRecipeViewController
 
-@synthesize IngredientsTableView,RecipeName,IngredientGrams,IngredientName;
+@synthesize IngredientsTableView,RecipeName,IngredientGrams,IngredientName,RecipeFromSegue;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,6 +30,11 @@
     [RecipeName setDelegate:self];
     [IngredientName setDelegate:self];
     [IngredientGrams setDelegate:self];
+    if (RecipeFromSegue!=nil) {
+        
+        [RecipeName setText: RecipeFromSegue];
+        [self FindRecipeFromSegue];
+    }
 }
 
 - (void)didReceiveMemoryWarning{
@@ -44,10 +49,11 @@
 #pragma mark - Table view data source
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    IngredientName.text = cell.textLabel.text;
+    IngredientGrams.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"g" withString:@""];
      [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -64,7 +70,7 @@
                                       reuseIdentifier:@"createRecipeIdentifier"];
     }
     cell.textLabel.text = [[fetchedObjects objectAtIndex:indexPath.row] recipeIngredient];
-     cell.detailTextLabel.text =[[fetchedObjects objectAtIndex:indexPath.row] recipeGrams];
+    cell.detailTextLabel.text =[[[fetchedObjects objectAtIndex:indexPath.row] recipeGrams] stringByAppendingString:@" g"];;
     return cell;
 }
 
@@ -116,6 +122,7 @@
     [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
     [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
     fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
+    fetchedObjects=[[[fetchedObjects reverseObjectEnumerator] allObjects] mutableCopy];
         if (fetchedObjects.count>0) {
             [RecipeName resignFirstResponder];
         }else{
@@ -159,13 +166,11 @@
                               [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
                               [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
                               fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
-
-                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe ingredient successfully saved."
-                                                                       delegate:self
-                                                                       cancelButtonTitle:@"OK"
-                                                                       otherButtonTitles:nil];
-                                 [alert show];
-                        }
+                              fetchedObjects=[[[fetchedObjects reverseObjectEnumerator] allObjects] mutableCopy];
+                              [IngredientName setText:@""];
+                              [IngredientGrams setText:@""];
+                              [IngredientName becomeFirstResponder];
+                            }
         
        }
         else{
@@ -181,6 +186,9 @@
                     [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
                     [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
                     fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
+                    [IngredientName setText:@""];
+                    [IngredientGrams setText:@""];
+                    [IngredientName becomeFirstResponder];
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"  message:@"Recipe ingredient successfully updated."
                                                                         delegate:self
                                                                         cancelButtonTitle:@"OK"
@@ -229,5 +237,30 @@
     }
 }
 
+-(void)FindRecipeFromSegue{
+    if (RecipeName.text.length>0 ) {
+        NSError *error;
+        NSFetchRequest * request = [[NSFetchRequest alloc] init];
+        [request setEntity:[NSEntityDescription entityForName:@"Recipes" inManagedObjectContext:context]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"recipeName = %@",RecipeName.text]];
+        fetchedObjects = (NSMutableArray*) [context executeFetchRequest:request error:&error];
+        fetchedObjects=[[[fetchedObjects reverseObjectEnumerator] allObjects] mutableCopy];
+        if (fetchedObjects.count>0) {
+            [RecipeName resignFirstResponder];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Recipe"  message:@"Recipe not found! "
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        
+    }
+    [IngredientsTableView reloadData];
+
+
+
+}
 
 @end

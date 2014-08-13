@@ -17,12 +17,15 @@
     NSManagedObjectContext * context;
     NSIndexPath *indexPathForDeletion;
     NSString *nameTodelete;
+    NSString *RecipeFromSegue;
+    
 }
 
 - (IBAction)FindRecipe:(id)sender;
 - (IBAction)AddIngredient:(id)sender;
 - (IBAction)DuplicateRecipe:(id)sender;
 
+@property (nonatomic) NSString *RecipeFromSegue;
 @property (weak, nonatomic) IBOutlet UITextField *RecipeName;
 @property (weak, nonatomic) IBOutlet UITextField *IngredientName;
 @property (weak, nonatomic) IBOutlet UITextField *IngredientGrams;
