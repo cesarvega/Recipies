@@ -43,6 +43,12 @@
 
 #pragma mark - Table view data source
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -72,7 +78,7 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         nameTodelete = cell.textLabel.text;
         indexPathForDeletion = indexPath;
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this user?"
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to delete this recipe?"
                                                           message:nil
                                                          delegate:self
                                                 cancelButtonTitle:@"No"
@@ -185,7 +191,6 @@
          [IngredientsTableView reloadData];
     }
 }
-
 
 - (IBAction)DuplicateRecipe:(id)sender {
     if (RecipeName.text.length>0 ) {
