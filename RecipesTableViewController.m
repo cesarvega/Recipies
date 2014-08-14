@@ -20,7 +20,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -62,8 +61,6 @@
     [CreateRecipe setRecipeFromSegue:RecipeFromSegue];
     [self presentViewController:CreateRecipe animated:YES completion:nil];
 }
-
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RecipiesListTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>{
-
-NSArray * AdminMenu;
+#import "AppDelegate.h"
+@interface RecipiesListTableViewController :UITableViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
+    NSArray * Users;
+    NSMutableArray *fetchedObjects;
+    AppDelegate *appDelegate;
+    NSManagedObjectContext * context;
+    NSIndexPath *indexPathForDeletion;
+    NSIndexPath *indexPathForSeguey;
+    NSString *nameTodelete;
+    NSString *RecipeFromSegue;
+    NSArray * AdminMenu;
 }
+
 @end

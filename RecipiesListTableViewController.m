@@ -8,7 +8,9 @@
 
 #import "RecipiesListTableViewController.h"
 #import "CreateUserViewController.h"
-
+#import "AppDelegate.h"
+#import "Recipes.h"
+#import "CreateRecipeViewController.h"
 @interface RecipiesListTableViewController ()
 
 @end
@@ -24,117 +26,63 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+
+- (void)viewDidLoad{
     [super viewDidLoad];
-        self.tableView.contentInset= UIEdgeInsetsMake(20,0,0,0);
-      AdminMenu = [[NSArray alloc] initWithObjects:@"View Recipies",@"Create Recipies", @"Create Users ", nil];
+    self.tableView.contentInset= UIEdgeInsetsMake(20,0,0,0);
+    
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    context = [appDelegate managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Recipes" inManagedObjectContext:context];
+    NSError *error;
+    [fetchRequest setEntity:entity];
+    [fetchRequest setReturnsDistinctResults:YES];
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"recipeName"]];
+    [fetchRequest setResultType:NSDictionaryResultType];
+    
+    fetchedObjects = [[NSMutableArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&error]];
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    indexPathForSeguey = indexPath;
+    RecipeFromSegue = [[fetchedObjects objectAtIndex:indexPathForSeguey.row]objectForKey:@"recipeName"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CreateRecipeViewController *CreateRecipe = (CreateRecipeViewController*)[storyboard instantiateViewControllerWithIdentifier:@"createrecipeIdentifier"];
+    [CreateRecipe setRecipeFromSegue:RecipeFromSegue];
+    [self presentViewController:CreateRecipe animated:YES completion:nil];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [AdminMenu count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [fetchedObjects count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipes" forIndexPath:indexPath];
-    
-    cell.textLabel.text = [AdminMenu objectAtIndex:indexPath.row];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:@"recipes"];
+    }
+    NSString* recipeName =[[fetchedObjects objectAtIndex:indexPath.row] objectForKey:@"recipeName"];
+    cell.textLabel.text = recipeName;
     
     return cell;
 }
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    CreateUserViewController *CreateUserView = (CreateUserViewController*)[storyboard instantiateViewControllerWithIdentifier:@"UserTableIdentifier"];
-
-    
-    switch (indexPath.row) {
-            
-        case 0:
-            
-            break;
-        case 1:
-            
-            break;
-        case 2:
-            
-            [self presentViewController:CreateUserView animated:YES completion:nil];
-            
-            break;
-            
-        default:
-            break;
-    }
-    
-    
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
