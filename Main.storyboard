@@ -391,9 +391,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="oUa-5u-szf" kind="modal" identifier="showDetail" trigger="accessoryAction" id="UJf-ex-kg3"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -409,7 +406,7 @@
         <!--Create Recipe View Controller-->
         <scene sceneID="mt4-qA-qRy">
             <objects>
-                <viewController id="oUa-5u-szf" customClass="CreateRecipeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="createrecipeIdentifier" id="oUa-5u-szf" customClass="CreateRecipeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XUT-DO-rIJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -524,7 +521,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRj-Yy-Dv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="306" y="657"/>
+            <point key="canvasLocation" x="69" y="757"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -533,7 +530,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UJf-ex-kg3"/>
         <segue reference="iBv-ej-d1I"/>
         <segue reference="gv3-hy-mKi"/>
     </inferredMetricsTieBreakers>

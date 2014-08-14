@@ -16,6 +16,7 @@
     NSIndexPath *indexPathForDeletion;
     NSIndexPath *indexPathForSeguey;
     NSString *nameTodelete;
+    NSString *RecipeFromSegue;
 }
 
 
