@@ -27,6 +27,7 @@
 		82342A92199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 82342A91199944ED00006F99 /* ThirstyScriptExtraBoldDemo.otf */; };
 		82342A951999486400006F99 /* MainmenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82342A941999486400006F99 /* MainmenuTableViewController.m */; };
 		82342A981999521C00006F99 /* RecipiesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82342A971999521C00006F99 /* RecipiesListTableViewController.m */; };
+		82681D43199CEAEB00553A9F /* CalculaterecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82681D42199CEAEB00553A9F /* CalculaterecipeViewController.m */; };
 		82A99E21199BDCE8001FFDEF /* Recipes.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A99E20199BDCE8001FFDEF /* Recipes.m */; };
 		82DCDC6E19995CCC0084D91E /* UsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCDC6D19995CCC0084D91E /* UsersTableViewController.m */; };
 		82DCDC7219995E980084D91E /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCDC7119995E980084D91E /* CreateUserViewController.m */; };
@@ -72,6 +73,8 @@
 		82342A941999486400006F99 /* MainmenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainmenuTableViewController.m; sourceTree = "<group>"; };
 		82342A961999521C00006F99 /* RecipiesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipiesListTableViewController.h; sourceTree = "<group>"; };
 		82342A971999521C00006F99 /* RecipiesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipiesListTableViewController.m; sourceTree = "<group>"; };
+		82681D41199CEAEB00553A9F /* CalculaterecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculaterecipeViewController.h; sourceTree = "<group>"; };
+		82681D42199CEAEB00553A9F /* CalculaterecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculaterecipeViewController.m; sourceTree = "<group>"; };
 		82A99E1F199BDCE8001FFDEF /* Recipes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipes.h; path = Recipies/Recipes.h; sourceTree = "<group>"; };
 		82A99E20199BDCE8001FFDEF /* Recipes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipes.m; path = Recipies/Recipes.m; sourceTree = "<group>"; };
 		82DCDC6C19995CCC0084D91E /* UsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersTableViewController.h; sourceTree = "<group>"; };
@@ -200,9 +203,9 @@
 			isa = PBXGroup;
 			children = (
 				82A99E1E199BB424001FFDEF /* ClientRecipe */,
+				82DCDC73199963880084D91E /* Recipes */,
 				82A99E1D199BB405001FFDEF /* Login&Menu */,
 				82DCDC7D199A599A0084D91E /* Entites */,
-				82DCDC73199963880084D91E /* Recipes */,
 				82DCDC6F19995E6B0084D91E /* Users */,
 			);
 			name = ViewControllers;
@@ -230,6 +233,8 @@
 		82A99E1E199BB424001FFDEF /* ClientRecipe */ = {
 			isa = PBXGroup;
 			children = (
+				82681D41199CEAEB00553A9F /* CalculaterecipeViewController.h */,
+				82681D42199CEAEB00553A9F /* CalculaterecipeViewController.m */,
 				82342A961999521C00006F99 /* RecipiesListTableViewController.h */,
 				82342A971999521C00006F99 /* RecipiesListTableViewController.m */,
 			);
@@ -375,6 +380,7 @@
 				823429DC19991BB800006F99 /* Recipies.xcdatamodeld in Sources */,
 				82DCDC79199963CE0084D91E /* RecipesTableViewController.m in Sources */,
 				823429D519991BB800006F99 /* main.m in Sources */,
+				82681D43199CEAEB00553A9F /* CalculaterecipeViewController.m in Sources */,
 				82DCDC7219995E980084D91E /* CreateUserViewController.m in Sources */,
 				82DCDC7C199A59890084D91E /* Users.m in Sources */,
 				82A99E21199BDCE8001FFDEF /* Recipes.m in Sources */,

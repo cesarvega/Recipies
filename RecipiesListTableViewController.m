@@ -10,7 +10,7 @@
 #import "CreateUserViewController.h"
 #import "AppDelegate.h"
 #import "Recipes.h"
-#import "CreateRecipeViewController.h"
+#import "CalculaterecipeViewController.h"
 @interface RecipiesListTableViewController ()
 
 @end
@@ -56,13 +56,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     indexPathForSeguey = indexPath;
     RecipeFromSegue = [[fetchedObjects objectAtIndex:indexPathForSeguey.row]objectForKey:@"recipeName"];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    CreateRecipeViewController *CreateRecipe = (CreateRecipeViewController*)[storyboard instantiateViewControllerWithIdentifier:@"createrecipeIdentifier"];
-    [CreateRecipe setRecipeFromSegue:RecipeFromSegue];
-    [self presentViewController:CreateRecipe animated:YES completion:nil];
+    CalculaterecipeViewController *CalculateRecipe = (CalculaterecipeViewController*)[storyboard instantiateViewControllerWithIdentifier:@"CalculateRecipe"];
+    [CalculateRecipe setRecipeFromSegue:RecipeFromSegue];
+    [self presentViewController:CalculateRecipe animated:YES completion:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
