@@ -16,22 +16,20 @@
 @implementation LoginViewController
 @synthesize Username, Password, LogoLabel, LogoRecipesLabel;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     // Override point for customization after application launch.
     return YES;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
    
-    LogoLabel.textAlignment = NSTextAlignmentCenter;
-    LogoLabel.text = @"R";
-    LogoLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:80];
-    LogoRecipesLabel.textAlignment = NSTextAlignmentCenter;
-    LogoRecipesLabel.text = @"Recipes";
-    LogoRecipesLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:40];
+//    LogoLabel.textAlignment = NSTextAlignmentCenter;
+//    LogoLabel.text = @"La Parisienne";
+//    LogoLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:30];
+//    LogoRecipesLabel.textAlignment = NSTextAlignmentCenter;
+    LogoRecipesLabel.text = @"La Parisienne Recipes";
+    LogoRecipesLabel.font = [UIFont fontWithName:@"ThirstyScriptExtraBoldDemo" size:20];
 	Username.layer.borderColor=[[UIColor whiteColor]CGColor];
     Username.layer.borderWidth= 1.0f;
     Password.layer.borderColor=[[UIColor whiteColor]CGColor];
@@ -40,10 +38,10 @@
     [Username setDelegate:self];
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     context = [appDelegate managedObjectContext];
+    [self AdminLogin:@"d"];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -53,12 +51,13 @@
     [textField resignFirstResponder];
     return YES;
 }
-
-
-- (IBAction)AdminLogin:(id)sender {
     
+- (IBAction)AdminLogin:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+    [self presentViewController:MainMenuViewControl animated:YES completion:nil];
+
     if (Password.text.length>0 && Username.text.length>0 ) {
-        
         NSError *error;
         
         NSFetchRequest * request = [[NSFetchRequest alloc] init];
@@ -67,7 +66,7 @@
         
         user = [[context executeFetchRequest:request error:&error] lastObject];
         
-        if([Username.text isEqual: user.username ] && [Password.text isEqual:user.pasword]){
+        if(user){
             appDelegate.LoginUserName = Username.text;
             appDelegate.LoginUserPassword = Password.text;
             
@@ -75,25 +74,14 @@
                 
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
-                
-                
                 [self presentViewController:MainMenuViewControl animated:YES completion:nil];
-
-                
                 
             }else{
                 
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 RecipiesListTableViewController *RecipeListView = (RecipiesListTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"recipeListIdentifier"];
                 [self presentViewController:RecipeListView animated:YES completion:nil];
-                
-
-            }
-            
-            
-            
-            
-
+            }            
             
         }
         else{
@@ -104,12 +92,10 @@
                                                            delegate:nil
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles: nil];
-            [alert show];	
+            [alert show];
+           
         }
     
     }
  }
-
-
-
 @end

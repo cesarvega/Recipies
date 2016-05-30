@@ -70,7 +70,7 @@
                                       reuseIdentifier:@"createRecipeIdentifier"];
     }
     cell.textLabel.text = [[fetchedObjects objectAtIndex:indexPath.row] recipeIngredient];
-    cell.detailTextLabel.text =[[[fetchedObjects objectAtIndex:indexPath.row] recipeGrams] stringByAppendingString:@" g"];;
+    cell.detailTextLabel.text =[[[fetchedObjects objectAtIndex:indexPath.row] recipeGrams] stringByAppendingString:@" g"];
     return cell;
 }
 
@@ -148,7 +148,7 @@
     [request setPredicate:[NSPredicate predicateWithFormat:@"(recipeName = %@) AND (recipeIngredient = %@)",RecipeName.text , IngredientName.text]];
     recipe = (Recipes*) [[context executeFetchRequest:request error:&error]lastObject] ;
         
-    if (recipe==nil) {
+    if (recipe!=nil) {
         
                             recipe = [NSEntityDescription
                                             insertNewObjectForEntityForName:@"Recipes"
