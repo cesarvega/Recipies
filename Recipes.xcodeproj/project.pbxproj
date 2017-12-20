@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -318,7 +318,7 @@
 				};
 			};
 			buildConfigurationList = 823429BE19991BB800006F99 /* Build configuration list for PBXProject "Recipes" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -494,7 +494,7 @@
 				INFOPLIST_FILE = "Recipies/Recipes-Info.plist";
 				PRODUCT_NAME = Recipes;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -511,7 +511,7 @@
 				INFOPLIST_FILE = "Recipies/Recipes-Info.plist";
 				PRODUCT_NAME = Recipes;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

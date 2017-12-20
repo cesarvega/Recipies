@@ -71,15 +71,15 @@
             appDelegate.LoginUserPassword = Password.text;
             
             if ([appDelegate.LoginUserName isEqual: @"Admin"] && [appDelegate.LoginUserPassword isEqual: @"embarek"] ) {
-                
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
-                [self presentViewController:MainMenuViewControl animated:YES completion:nil];
-                
+//                
+//                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                MainmenuTableViewController *MainMenuViewControl = (MainmenuTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+//                [self presentViewController:MainMenuViewControl animated:YES completion:nil];
+//                
             }else{
                 
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                RecipiesListTableViewController *RecipeListView = (RecipiesListTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"recipeListIdentifier"];
+                RecipiesListTableViewController *RecipeListView = (RecipiesListTableViewController*)[storyboard instantiateViewControllerWithIdentifier:@"recipesIdentifie"];
                 [self presentViewController:RecipeListView animated:YES completion:nil];
             }            
             

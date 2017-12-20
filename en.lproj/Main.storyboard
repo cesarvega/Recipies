@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9qm-V5-0xP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9qm-V5-0xP">
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="2064" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -23,19 +23,19 @@
                                 <color key="tintColor" red="0.37906015641761548" green="0.25425325348134997" blue="0.13061391401390182" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="USERNAME" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pTU-i3-kew">
-                                <rect key="frame" x="59" y="178" width="220" height="30"/>
+                                <rect key="frame" x="104" y="218" width="220" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="PASSWORD" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zxJ-00-Jsq">
-                                <rect key="frame" x="59" y="216" width="220" height="30"/>
+                                <rect key="frame" x="104" y="256" width="220" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jP-Rn-SXe">
-                                <rect key="frame" x="25" y="140" width="288" height="30"/>
+                                <rect key="frame" x="70" y="180" width="288" height="30"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Search">
                                         <attributes>
@@ -48,10 +48,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="300.png" translatesAutoresizingMaskIntoConstraints="NO" id="c28-e9-LtC">
-                                <rect key="frame" x="62" y="5" width="215" height="135"/>
+                                <rect key="frame" x="107" y="45" width="215" height="135"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMP-0S-T5Q">
-                                <rect key="frame" x="130" y="254" width="78" height="16"/>
+                                <rect key="frame" x="175" y="304" width="78" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3EZ-KM-bKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1409" y="-875"/>
+            <point key="canvasLocation" x="-1366" y="-880"/>
         </scene>
         <!--Mainmenu Table View Controller-->
         <scene sceneID="BnK-d4-kIk">
@@ -98,9 +98,6 @@
                                 <navigationItem title="Admin" id="rlY-eZ-1Q4" colorLabel="IBBuiltInLabel-Red">
                                     <barButtonItem key="leftBarButtonItem" title="Logout" id="hKf-47-SJv">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="9qm-V5-0xP" kind="presentation" id="gv3-hy-mKi"/>
-                                        </connections>
                                     </barButtonItem>
                                 </navigationItem>
                             </items>
@@ -128,7 +125,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBB-m3-bdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-716.25" y="-874.64788732394356"/>
+            <point key="canvasLocation" x="-765" y="-992"/>
         </scene>
         <!--Users Table View Controller-->
         <scene sceneID="Hcm-g8-IlT">
@@ -200,7 +197,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrW-of-gZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60" y="-874.64788732394356"/>
+            <point key="canvasLocation" x="66" y="-875"/>
         </scene>
         <!--Create User View Controller-->
         <scene sceneID="ZZB-Qx-lAX">
@@ -424,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-3R-dzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-616.875" y="-141.54929577464787"/>
+            <point key="canvasLocation" x="-633" y="394"/>
         </scene>
         <!--Recipes Table View Controller-->
         <scene sceneID="PgR-0a-LgU">
@@ -448,7 +445,7 @@
                                     <barButtonItem key="leftBarButtonItem" title="Back" id="VxQ-YI-zye">
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="EDC-SB-xVL" kind="presentation" id="iBv-ej-d1I"/>
+                                            <segue destination="9qm-V5-0xP" kind="presentation" id="0jB-ZY-EUq"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" systemItem="add" id="sze-hM-2Pn">
@@ -488,7 +485,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4w-Ag-bIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1417.5" y="-141.54929577464787"/>
+            <point key="canvasLocation" x="-1372" y="-106"/>
         </scene>
         <!--Create Recipe View Controller-->
         <scene sceneID="mt4-qA-qRy">
@@ -513,9 +510,6 @@
                                     <navigationItem title="Create Recipe" id="Cvb-mp-CcC">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="6he-UG-pix">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="IB9-fR-i4Z" kind="presentation" id="8eb-Kb-LS1"/>
-                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Duplicate" id="reD-VB-0cm">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -613,7 +607,6 @@
         <image name="300.png" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rxg-2X-UTk"/>
-        <segue reference="gv3-hy-mKi"/>
+        <segue reference="0jB-ZY-EUq"/>
     </inferredMetricsTieBreakers>
 </document>
